@@ -1,9 +1,11 @@
 import {FC} from 'react'
-import { styles } from './styles'
+import styles from './home.module.css'
+import Header from '~/components/navbar'
 
 const HomePage: FC = () => {
   return(
-    <div style={styles}>
+    <div className={styles.container}>
+      <Header/>
     </div>
   )
 }

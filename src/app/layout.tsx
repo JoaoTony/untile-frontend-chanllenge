@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../styles/globals.css";
 import { theme } from "~/styles/theme";
+import NavBar from "~/components/navbar";
+
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,11 +13,15 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
+ 
   return (
     <html lang="en">
-      <body className={theme.fonts.ubuntu.className}>{children}</body>
+      <body className={theme.fonts.ubuntu.className}>
+        <NavBar/>
+        {children}
+      </body>
     </html>
   );
 }
