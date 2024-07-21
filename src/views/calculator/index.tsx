@@ -1,37 +1,22 @@
 import {FC} from 'react'
 import styles from './calculator.module.css'
-import Input from '~/components/input'
-import InputSelect from '~/components/input/select'
-import Button from '~/components/button'
-import TickerCard from '~/components/ticker-card'
-
-const data = [
-  {key: 'ETH', value: 'eth'},
-  {key: 'BTC', value: 'btc'},
-  {key: 'SCR', value: 'scr'}
-]
+import viewStyles from '../views.module.css' 
+import ConvertSection from './convert-section'
+import Converted from './converted'
 
 const CalculatorPage: FC = () => {
   return(
-    <div className={styles.container}>
-      <span className={styles.title}>Crypto Calculator</span>
+    <div className={viewStyles.tickers_and_calculator_container}>
+      <span className={viewStyles.title}>Crypto Calculator</span>
 
-      <Input
-        placeholder='Value'
-        type='number'
-        label='FROM'
-      />
-      <InputSelect
-        label='TO'
-        data={data}
-      />
+      <ConvertSection/>
 
-      <Button
-        text='Convert'
-      />
+      <span className={styles.result}>Result</span>
 
-      <TickerCard />
-
+      <Converted isNew/>
+      <Converted/>
+      <Converted/>
+      <Converted/>
     </div>
   )
 }

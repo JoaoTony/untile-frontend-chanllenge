@@ -7,7 +7,7 @@
   background: var(--white);
   background-image: linear-gradient(180deg, var(--gey-1000) 0%, var(--white) 100%);
   border: 1px solid var(--gray-800);
-  box-shadow: inset 1px 1px 0 0 var(--white)80;
+  box-shadow: var(--white-shadow);
   border-radius: var(--default-radius);
 
   width: 192px;

@@ -1,0 +1,7 @@
+.tickers_list {
+  margin-top: 75px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}

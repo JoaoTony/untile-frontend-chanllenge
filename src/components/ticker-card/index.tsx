@@ -1,17 +1,9 @@
 import {FC} from 'react'
 
 import styles from './ticker_card.module.css'
+import { TickerCardProps } from '~/types/ticker-card'
 
-export type TickerCardProps = {
-  title: string
-  lastValue: number
-  lastTrade: string
-  time: string
-  market: number
-  marketVolume: string
-}
-
-const TickerCard: FC<TickerCardProps> = ({title, lastTrade, lastValue, time, market, marketVolume}) => {
+const TickerCard: FC<TickerCardProps> = ({title, lastTrade, lastValue, time, market, marketVolume, coin}) => {
   return(
     <div className={styles.container}>
       <div className={styles.column}>
@@ -21,7 +13,7 @@ const TickerCard: FC<TickerCardProps> = ({title, lastTrade, lastValue, time, mar
           <div className={styles.row} style={{ marginBottom: 8 }}>
             <span className={styles.label}>Last value:</span>
             <span className={styles.text}>{lastValue}</span>
-            <span className={`${styles.text} ${styles.coin}`}>USD</span>
+            <span className={`${styles.text} ${styles.coin}`}>{coin}</span>
           </div>
           <div className={styles.row}>
             <span className={styles.label}>Last trade:</span>

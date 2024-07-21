@@ -1,0 +1,31 @@
+.tickers_and_calculator_container {
+  width: 100%;
+
+  padding-top: 96px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.title {
+  font-size: 40px;
+  color: var(--blue-300);
+  letter-spacing: 0.8px;
+  text-align: center;
+  line-height: 56px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+}
+
+.header_section {
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 16px;
+
+  margin-top: 32px;
+}

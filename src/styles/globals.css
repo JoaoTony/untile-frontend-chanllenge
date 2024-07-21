@@ -10,7 +10,10 @@
   --background: #F4F4F1;
   --white: #ffffff;
 
+  --white-shadow: inset 1px 1px 0 0 rgba(255,255,255,0.80);
+
   --blue-000: #10345C;
+  --blue-010: #194475;
   --blue-100: #1C4E86;
   --blue-200: #1E5891;
   --blue-300: #21639C;
@@ -30,6 +33,7 @@
   --gray-800: #E0E0D7;
   --gray-900: #F4F4F1;
   --gray-1000: #F5F5F5;
+  --gray-1100: #F8F8F8;
 
   --default-radius: 4px;
 
