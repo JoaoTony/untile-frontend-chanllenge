@@ -6,6 +6,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export interface SelecttProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string
+  path?: string
   data?: {key: string, value: any}[]
   onChangeOption?: (value: string) => void
 }

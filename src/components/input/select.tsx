@@ -1,5 +1,5 @@
 'use client'
-import {FC, useEffect, useState} from 'react'
+import {FC, useState, useEffect} from 'react'
 
 import Image from 'next/image'
 
@@ -9,7 +9,7 @@ import styles from './input.module.css'
 import { SelecttProps } from './input.types'
 
 const InputSelect: FC<SelecttProps> = props => {
-  const { label, data, onChangeOption } = props
+  const { label, data, onChangeOption, path, value } = props
 
   const [open, setIsOpen] = useState(false)
   const [selected, setSelected] = useState({
@@ -17,10 +17,19 @@ const InputSelect: FC<SelecttProps> = props => {
     value: ''
   })
 
-
   const onChangeValue = (key: string) => {
     onChangeOption && onChangeOption(key)
   }
+
+  useEffect(() => {
+    if(value) {
+      const getSelected = data?.find(item => item.value === value)
+      
+      if(getSelected) {
+        setSelected(getSelected)
+      }
+    }
+  }, [value])
 
   return(
     <div className={styles.wrapper}>
@@ -33,7 +42,7 @@ const InputSelect: FC<SelecttProps> = props => {
         onClick={() => setIsOpen(prev => !prev)}
         onBlur={() => setIsOpen(false)}
       >
-        <span>{selected?.key}</span>
+        <span className={styles.selected}>{selected?.key}</span>
       <div className={styles.select_affow}>
 
         <Image src={ARROW_DOWN} alt="" />
@@ -42,12 +51,12 @@ const InputSelect: FC<SelecttProps> = props => {
       {
         open && (
           <div className={styles.select_content}>
-            {data?.map(option => (
+            {data?.map((option, index) => (
               <div 
                 className={styles.select_content_item}
-                key={option.key}
+                key={`${option.key}-${index}`}
                 onClick={() => {
-                  onChangeValue(option.key)
+                  onChangeValue(option.value)
                   setSelected(option)
                 }}
               >

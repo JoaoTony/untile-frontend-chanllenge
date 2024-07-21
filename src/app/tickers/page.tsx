@@ -1,5 +1,5 @@
 import TickersPage from "~/views/tickers";
 
-export default function Home({searchParams, params}: {searchParams: any, params: any}) {
-  return <TickersPage />
+export default function Home({searchParams}: {searchParams: { coin: string, market: string }}) {
+  return <TickersPage searchParams={searchParams} />
 }

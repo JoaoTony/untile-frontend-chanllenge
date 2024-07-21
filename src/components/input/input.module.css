@@ -55,7 +55,9 @@
   padding-left: 16px;
 
   font-weight: 400;
-  color: var(--gray-010)
+  color: var(--gray-010);
+
+  text-overflow: ellipsis;
 }
 
 .select_affow {
@@ -72,6 +74,9 @@
 .select_content {
   position: absolute;
   width: 100%;
+
+  max-height: 400px;
+  overflow-y: auto;
 
   left: 0;
   top: calc(100% + 2px);
@@ -98,7 +103,7 @@
   font-size: 16px;
   color: var(--gray-000);
   letter-spacing: 0;
-  text-align: right;
+  text-align: left;
   line-height: 32px;
 
   cursor: pointer;
@@ -106,4 +111,16 @@
 
 .select_content_item:hover {
   background-color: var(--gray-1000);
+}
+
+.selected_div {
+  display: flex;
+  overflow: hidden;
+}
+
+.selected {
+  display: inline;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

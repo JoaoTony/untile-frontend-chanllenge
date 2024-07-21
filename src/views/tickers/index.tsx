@@ -3,37 +3,32 @@ import styles from './tickers.module.css'
 import viewStyles from '../views.module.css' 
 import SearchSection from './search-section'
 import TickersList from './tickers-list'
+import { getSupportedCurrencies } from '~/services/get-supported-currencies'
+import { getExchangesList } from '~/services/get-exchanges-list'
+import { getCoinsTickers } from '~/services/get-coins-tickers'
 
-const fakeList = [
-  {
-    title: 'BCT/USD',
-    lastValue: 9389.09,
-    lastTrade: '10 fev 2020',
-    time: '14:35',
-    market: 'Binance',
-    marketVolume: '40260.61307178278',
-    coin: 'USD'
-  },
-  {
-    title: 'BCT/USD',
-    lastValue: 9389.09,
-    lastTrade: '10 fev 2020',
-    time: '14:35',
-    market: 'Binance',
-    marketVolume: '40260.61307178278',
-    coin: 'USD'
-  }
-]
+interface TickersPageProps {
+  searchParams: { coin: string, market: string }
+}
 
-const TickersPage: FC = () => {
+const TickersPage: FC<TickersPageProps> = async ({ searchParams }) => {
+  const exchangesList = await getExchangesList()
+  const supportedCurrences = await getSupportedCurrencies()
+
+  const data = await getCoinsTickers(searchParams.coin, searchParams.market)
+
   return(
     <div className={viewStyles.tickers_and_calculator_container}>
       <span className={viewStyles.title}>TICKERS</span>
 
-      <SearchSection/>
+      <SearchSection
+        coins={supportedCurrences}
+        markers={exchangesList}
+        searchParams={searchParams}
+      />
 
       <TickersList
-        list={fakeList}
+        list={data?.tickers}
       />
     </div>
   )
