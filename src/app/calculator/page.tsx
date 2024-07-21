@@ -1,10 +1,5 @@
-import { headers } from "next/headers";
-
+import CalculatorPage from "~/views/calculator";
 
 export default function Home() {
-  return (
-    <h1 style={{ color: 'red' }}>
-      Vamos ver se da cerfto calculator
-    </h1>
-  );
+  return <CalculatorPage/>
 }
