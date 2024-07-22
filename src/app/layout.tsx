@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 import { theme } from "~/styles/theme";
 import NavBar from "~/components/navbar";
-
-
+import { CookiesProvider } from 'next-client-cookies/server';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={theme.fonts.ubuntu.className}>
         <NavBar/>
-        {children}
+        <CookiesProvider>
+          {children}
+        </CookiesProvider>
       </body>
     </html>
   );

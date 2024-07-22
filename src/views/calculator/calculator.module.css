@@ -31,11 +31,13 @@
 
 .unit {
   margin-left: 5px;
+  text-transform: uppercase;
 }
 
 .new_unit {
   color: var(--gray-100);
   margin-left: 5px;
+  text-transform: uppercase;
 }
 
 .new_converted {

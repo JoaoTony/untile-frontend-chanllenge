@@ -1,34 +1,34 @@
-import axios from "axios"
 import { TickerResponse } from "~/types/ticker-card"
+import { fetcher } from "./fetcher"
 
-export type GetCoinsTickers = {
-  last: number
-  volume: any
-  converted_last: string
-  converted_volume: any
-  timestamp: any
-  last_traded_at: any
-  last_fetch_at: any
-}
+interface Response {name: string, tickers: TickerResponse[]}
 
 export const getCoinsTickers = async (coin_id: string, exchange_id: string) => {
   const response = {
     name: '', 
     tickers: undefined as any as TickerResponse[],
-    loading: true
+    loading: true,
+    errorMessage: ''
+  }
+
+  if(!coin_id || !exchange_id) {
+    return
   }
   
   try {
-    const res = await axios.get(`https://api.coingecko.com/api/v3/coins/${coin_id}/tickers?exchange_ids=${exchange_id}`)
+    const data = await fetcher.get<Response>(`/coins/${coin_id}/tickers?exchange_ids=${exchange_id}`)
 
-    const data = res.data as {name: string, tickers: TickerResponse[]}
-  
     response.tickers = data?.tickers
     response.name = data?.name
     response.loading = false
     
-  } catch (error) {
-    console.log("erro:", error)
+  } catch (error: any) {
+    const res = error?.response
+    console.log("erro:", res?.status, res?.data?.error)
+
+    if(res?.status === 404) {
+      response.errorMessage = res?.data?.error
+    }
 
     response.loading = false
   }

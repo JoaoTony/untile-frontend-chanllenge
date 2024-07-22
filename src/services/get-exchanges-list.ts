@@ -1,5 +1,14 @@
-export const getExchangesList = async () => {
-  const res = await fetch('https://api.coingecko.com/api/v3/exchanges/list')
+import { fetcher } from "./fetcher"
 
-  return await res.json() as {id: string, name: string}[]
+type Response = {id: string, name: string}[]
+
+export const getExchangesList = async () => {
+  try {
+    const data = await fetcher.get<Response>('/exchanges/list', { next: { revalidate: 60 * 5} })
+   
+    return data
+  } catch (error) {
+    return
+  }
+
 }

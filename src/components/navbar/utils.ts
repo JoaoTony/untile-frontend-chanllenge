@@ -1,12 +1,13 @@
+import { PATHS } from '~/constants/paths'
 import styles from './navbar.module.css'
 
 export const NAV_LINKS = [
   {
-    url: '/calculator',
+    url: `/${PATHS.calculator}`,
     label: 'Crypto Calculator'
   },
   {
-    url: '/tickers',
+    url: `/${PATHS.tickers}`,
     label: 'Tickers'
   }
 ]

@@ -3,20 +3,20 @@ import { FC } from "react";
 import styles from './calculator.module.css'
 import { ConvertedProps } from "./calculator.types";
 
-const Converted: FC<ConvertedProps> = ({ isNew }) => {
+const Converted: FC<ConvertedProps> = ({ isNew, from, to }) => {
   return (
     <span className={isNew ? styles.new_converted : styles.converted}>
       <strong className={isNew ? styles.new_strong : styles.strong}>
-        1000
+          {from.value}
         <strong className={isNew ? styles.new_unit : styles.unit}>
-          BTC
+          {from.unit}
         </strong>
       </strong>
       is worth
       <strong className={isNew ? styles.new_strong : styles.strong}>
-        362 
+        {to.value} 
         <strong className={isNew ? styles.new_unit : styles.unit}>
-          ETC
+          {to.unit}
         </strong>
       </strong>
     </span>

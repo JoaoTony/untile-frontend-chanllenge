@@ -3,6 +3,7 @@ import {FC} from 'react'
 import styles from './ticker_card.module.css'
 import { TickerResponse } from '~/types/ticker-card'
 import Link from 'next/link'
+import { formatDate, formatTime } from '~/utils/format-time'
 
 const TickerCard: FC<TickerResponse> = (data) => {
   return(
@@ -18,8 +19,8 @@ const TickerCard: FC<TickerResponse> = (data) => {
           </div>
           <div className={styles.row}>
             <span className={styles.label}>Last trade:</span>
-            <span className={styles.text}>{data?.last_traded_at},</span>
-            <span className={`${styles.text} ${styles.time}`}>{}</span>
+            <span className={styles.text}>{formatDate(data?.last_traded_at)},</span>
+            <span className={`${styles.text} ${styles.time}`}>{formatTime(data?.last_traded_at)}</span>
           </div>
         </div>
       </div>
